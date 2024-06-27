@@ -20,6 +20,7 @@
 		5D5336C22C2DF372009E58A6 /* CatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5336C12C2DF372009E58A6 /* CatTests.swift */; };
 		5D5336C42C2DF4A6009E58A6 /* CatColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5336C32C2DF4A6009E58A6 /* CatColor.swift */; };
 		5D5336C72C2DF7B1009E58A6 /* EditCatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5336C62C2DF7B1009E58A6 /* EditCatView.swift */; };
+		5D5336CA2C2DFC47009E58A6 /* CatFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5336C92C2DFC47009E58A6 /* CatFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		5D5336C12C2DF372009E58A6 /* CatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatTests.swift; sourceTree = "<group>"; };
 		5D5336C32C2DF4A6009E58A6 /* CatColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatColor.swift; sourceTree = "<group>"; };
 		5D5336C62C2DF7B1009E58A6 /* EditCatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCatView.swift; sourceTree = "<group>"; };
+		5D5336C92C2DFC47009E58A6 /* CatFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,8 +148,7 @@
 		5D5336BB2C2DED06009E58A6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5D5336922C29F83E009E58A6 /* Cat.swift */,
-				5D5336C32C2DF4A6009E58A6 /* CatColor.swift */,
+				5D5336C82C2DFC3C009E58A6 /* Cat */,
 				5D5336BC2C2DED2A009E58A6 /* ModelContainerFactory.swift */,
 			);
 			path = Models;
@@ -169,6 +170,16 @@
 				5D5336C62C2DF7B1009E58A6 /* EditCatView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		5D5336C82C2DFC3C009E58A6 /* Cat */ = {
+			isa = PBXGroup;
+			children = (
+				5D5336922C29F83E009E58A6 /* Cat.swift */,
+				5D5336C32C2DF4A6009E58A6 /* CatColor.swift */,
+				5D5336C92C2DFC47009E58A6 /* CatFactory.swift */,
+			);
+			path = Cat;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,6 +315,7 @@
 				5D5336912C29F83E009E58A6 /* ContentView.swift in Sources */,
 				5D5336C42C2DF4A6009E58A6 /* CatColor.swift in Sources */,
 				5D5336932C29F83E009E58A6 /* Cat.swift in Sources */,
+				5D5336CA2C2DFC47009E58A6 /* CatFactory.swift in Sources */,
 				5D5336C72C2DF7B1009E58A6 /* EditCatView.swift in Sources */,
 				5D5336BD2C2DED2A009E58A6 /* ModelContainerFactory.swift in Sources */,
 				5D53368F2C29F83E009E58A6 /* SwiftDataApp.swift in Sources */,

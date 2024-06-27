@@ -7,11 +7,11 @@ struct ContentView: View {
     @Query private var cats: [Cat]
 
     var body: some View {
-        NavigationSplitView {
+        NavigationStack {
             List { list }
                 .toolbar { toolbar }
-        } detail: {
-            Text("Select an item")
+                .navigationTitle("Cat organizer")
+                .navigationBarTitleDisplayMode(.large)
         }
     }
     
@@ -23,27 +23,28 @@ struct ContentView: View {
                 Text("\(cat.name), \(cat.color.rawValue)")
             }
         }
-        .onDelete(perform: deleteItems)
+        .onDelete(perform: deleteCats)
     }
     
     private var toolbar: some ToolbarContent {
         ToolbarItemGroup {
             EditButton()
             
-            Button(action: addItem) {
-                Label("Add Item", systemImage: "plus")
+            Button(action: addCat) {
+                Label("Add new Cat", systemImage: "plus")
             }
         }
     }
     
-    private func addItem() {
+    private func addCat() {
         withAnimation {
-            let newItem = Cat(timestamp: Date(), name: "New cat", color: .white)
-            modelContext.insert(newItem)
+            let newCat = CatFactory.create()
+            
+            modelContext.insert(newCat)
         }
     }
 
-    private func deleteItems(offsets: IndexSet) {
+    private func deleteCats(offsets: IndexSet) {
         withAnimation {
             for index in offsets {
                 modelContext.delete(cats[index])
