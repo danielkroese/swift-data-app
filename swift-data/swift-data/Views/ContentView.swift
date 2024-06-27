@@ -11,16 +11,16 @@ struct ContentView: View {
             List { list }
                 .toolbar { toolbar }
         } detail: {
-            Text("Select an item") // main view
+            Text("Select an item")
         }
     }
     
     private var list: some View {
         ForEach(cats) { cat in
             NavigationLink {
-                Text("Cat \(cat.name) created at \(cat.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
+                EditCatView(cat: cat)
             } label: {
-                Text(cat.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+                Text("\(cat.name), \(cat.color.rawValue)")
             }
         }
         .onDelete(perform: deleteItems)
@@ -38,7 +38,7 @@ struct ContentView: View {
     
     private func addItem() {
         withAnimation {
-            let newItem = Cat(timestamp: Date(), name: "Smokey", color: .white)
+            let newItem = Cat(timestamp: Date(), name: "New cat", color: .white)
             modelContext.insert(newItem)
         }
     }

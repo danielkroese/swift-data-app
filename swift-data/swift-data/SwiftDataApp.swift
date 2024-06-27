@@ -2,7 +2,7 @@ import SwiftUI
 import SwiftData
 
 @main
-struct swift_dataApp: App {
+struct SwiftDataApp: App {
     var modelContainer: ModelContainer = {
         do {
             return try ModelContainerFactory.create()
