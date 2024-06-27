@@ -1,23 +1,11 @@
-//
-//  swift_dataApp.swift
-//  swift-data
-//
-//  Created by Daniël Kroese Personal on 24/06/2024.
-//
-
 import SwiftUI
 import SwiftData
 
 @main
 struct swift_dataApp: App {
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Item.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
+    var modelContainer: ModelContainer = {
         do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+            return try ModelContainerFactory.create()
         } catch {
             fatalError("Could not create ModelContainer: \(error)")
         }
@@ -27,6 +15,6 @@ struct swift_dataApp: App {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(sharedModelContainer)
+        .modelContainer(modelContainer)
     }
 }
