@@ -1,18 +1,17 @@
-//
-//  Item.swift
-//  swift-data
-//
-//  Created by Daniël Kroese Personal on 24/06/2024.
-//
-
 import Foundation
 import SwiftData
 
 @Model
 final class Cat {
+    @Attribute(.unique) var id: UUID
     var timestamp: Date
+    var name: String
+    var color: CatColor
     
-    init(timestamp: Date) {
+    init(timestamp: Date, name: String, color: CatColor) {
+        self.id = UUID()
         self.timestamp = timestamp
+        self.name = name
+        self.color = color
     }
 }

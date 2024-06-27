@@ -17,6 +17,8 @@
 		5D5336AE2C29F840009E58A6 /* swift_dataUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5336AD2C29F840009E58A6 /* swift_dataUITestsLaunchTests.swift */; };
 		5D5336BD2C2DED2A009E58A6 /* ModelContainerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5336BC2C2DED2A009E58A6 /* ModelContainerFactory.swift */; };
 		5D5336C02C2DEDB8009E58A6 /* ModelContainerFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5336BF2C2DEDB8009E58A6 /* ModelContainerFactoryTests.swift */; };
+		5D5336C22C2DF372009E58A6 /* CatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5336C12C2DF372009E58A6 /* CatTests.swift */; };
+		5D5336C42C2DF4A6009E58A6 /* CatColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5336C32C2DF4A6009E58A6 /* CatColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		5D5336BA2C29F864009E58A6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		5D5336BC2C2DED2A009E58A6 /* ModelContainerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelContainerFactory.swift; sourceTree = "<group>"; };
 		5D5336BF2C2DEDB8009E58A6 /* ModelContainerFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelContainerFactoryTests.swift; sourceTree = "<group>"; };
+		5D5336C12C2DF372009E58A6 /* CatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatTests.swift; sourceTree = "<group>"; };
+		5D5336C32C2DF4A6009E58A6 /* CatColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				5D5336922C29F83E009E58A6 /* Cat.swift */,
+				5D5336C32C2DF4A6009E58A6 /* CatColor.swift */,
 				5D5336BC2C2DED2A009E58A6 /* ModelContainerFactory.swift */,
 			);
 			path = Models;
@@ -150,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				5D5336BF2C2DEDB8009E58A6 /* ModelContainerFactoryTests.swift */,
+				5D5336C12C2DF372009E58A6 /* CatTests.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -285,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D5336912C29F83E009E58A6 /* ContentView.swift in Sources */,
+				5D5336C42C2DF4A6009E58A6 /* CatColor.swift in Sources */,
 				5D5336932C29F83E009E58A6 /* Cat.swift in Sources */,
 				5D5336BD2C2DED2A009E58A6 /* ModelContainerFactory.swift in Sources */,
 				5D53368F2C29F83E009E58A6 /* swift_dataApp.swift in Sources */,
@@ -296,6 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D5336C02C2DEDB8009E58A6 /* ModelContainerFactoryTests.swift in Sources */,
+				5D5336C22C2DF372009E58A6 /* CatTests.swift in Sources */,
 				5D5336A22C29F840009E58A6 /* swift_dataTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -468,6 +476,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.danielkroese.swift-data";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -497,6 +506,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.danielkroese.swift-data";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
