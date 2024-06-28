@@ -12,27 +12,32 @@ struct EditCatView: View {
 
     var body: some View {
         VStack {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 16) {
                 Text(cat.name)
                     .font(.title.bold())
                     .foregroundStyle(cat.color.color)
                     .drawingGroup()
+                    .padding(.top)
                 
                 Text("This \(cat.color.rawValue) cat was added on \(cat.timestamp, format: dateFormat)")
                     .font(.subheadline)
             }
-            .padding()
+            .padding(.horizontal)
             .frame(maxWidth: .infinity, alignment: .leading)
             
             Form {
-                TextField("Name", text: $cat.name.animation())
-                
-                Picker("Color", selection: $cat.color.animation()) {
-                    ForEach(CatColor.allCases) { color in
-                        Text(color.rawValue.localizedCapitalized)
+                Group {
+                    TextField("Name", text: $cat.name.animation())
+                    
+                    Picker("Color", selection: $cat.color.animation()) {
+                        ForEach(CatColor.allCases) { color in
+                            Text(color.rawValue.localizedCapitalized)
+                        }
                     }
                 }
+                .listRowBackground(cat.color.color.opacity(0.4))
             }
+            .scrollContentBackground(.hidden)
             
             Button("Close") {
                 dismiss()
@@ -40,7 +45,7 @@ struct EditCatView: View {
         }
         .background(cat.color.color.quinary)
         .navigationTitle("Edit cat")
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationHeaderStyle(cat.color.color, size: .inline)
     }
 }
 

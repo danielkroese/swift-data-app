@@ -13,9 +13,8 @@ struct ContentView: View {
                 .padding(.top, 32)
                 .toolbar { toolbar }
                 .navigationTitle("Cat organizer")
-                .navigationBarTitleDisplayMode(.large)
+                .navigationHeaderStyle(.orange, size: .large)
         }
-        .navigationSplitViewStyle(.prominentDetail)
     }
     
     private var listContent: some View {
@@ -47,7 +46,7 @@ struct ContentView: View {
             modelContext.insert(newCat)
         }
     }
-
+    
     private func deleteCats(offsets: IndexSet) {
         withAnimation {
             for index in offsets {

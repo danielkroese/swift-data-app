@@ -15,7 +15,7 @@ enum CatColor: String, Codable, CaseIterable {
         case .orange: .orange
         case .brown: .brown
         case .white, .gray: .gray
-        case .black: .black
+        case .black: .gray
         }
     }
 }

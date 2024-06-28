@@ -21,6 +21,7 @@
 		5D5336C42C2DF4A6009E58A6 /* CatColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5336C32C2DF4A6009E58A6 /* CatColor.swift */; };
 		5D5336C72C2DF7B1009E58A6 /* EditCatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5336C62C2DF7B1009E58A6 /* EditCatView.swift */; };
 		5D5336CA2C2DFC47009E58A6 /* CatFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5336C92C2DFC47009E58A6 /* CatFactory.swift */; };
+		5D5336CD2C2F68F4009E58A6 /* NavigationHeaderStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5336CC2C2F68F4009E58A6 /* NavigationHeaderStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		5D5336C32C2DF4A6009E58A6 /* CatColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatColor.swift; sourceTree = "<group>"; };
 		5D5336C62C2DF7B1009E58A6 /* EditCatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCatView.swift; sourceTree = "<group>"; };
 		5D5336C92C2DFC47009E58A6 /* CatFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatFactory.swift; sourceTree = "<group>"; };
+		5D5336CC2C2F68F4009E58A6 /* NavigationHeaderStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHeaderStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 		5D5336C52C2DF7A0009E58A6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5D5336CB2C2F68E0009E58A6 /* View Modifiers */,
 				5D5336902C29F83E009E58A6 /* ContentView.swift */,
 				5D5336C62C2DF7B1009E58A6 /* EditCatView.swift */,
 			);
@@ -180,6 +183,14 @@
 				5D5336C92C2DFC47009E58A6 /* CatFactory.swift */,
 			);
 			path = Cat;
+			sourceTree = "<group>";
+		};
+		5D5336CB2C2F68E0009E58A6 /* View Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				5D5336CC2C2F68F4009E58A6 /* NavigationHeaderStyle.swift */,
+			);
+			path = "View Modifiers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,6 +323,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D5336CD2C2F68F4009E58A6 /* NavigationHeaderStyle.swift in Sources */,
 				5D5336912C29F83E009E58A6 /* ContentView.swift in Sources */,
 				5D5336C42C2DF4A6009E58A6 /* CatColor.swift in Sources */,
 				5D5336932C29F83E009E58A6 /* Cat.swift in Sources */,
