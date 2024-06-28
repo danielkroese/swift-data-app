@@ -8,20 +8,24 @@ struct ContentView: View {
 
     var body: some View {
         NavigationStack {
-            List { list }
+            List { listContent }
+                .scrollContentBackground(.hidden)
+                .padding(.top, 32)
                 .toolbar { toolbar }
                 .navigationTitle("Cat organizer")
                 .navigationBarTitleDisplayMode(.large)
         }
+        .navigationSplitViewStyle(.prominentDetail)
     }
     
-    private var list: some View {
+    private var listContent: some View {
         ForEach(cats) { cat in
             NavigationLink {
                 EditCatView(cat: cat)
             } label: {
                 Text("\(cat.name), \(cat.color.rawValue)")
             }
+            .listRowBackground(cat.color.color.opacity(0.4))
         }
         .onDelete(perform: deleteCats)
     }

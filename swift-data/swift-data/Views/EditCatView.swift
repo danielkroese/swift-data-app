@@ -6,6 +6,9 @@ struct EditCatView: View {
     @Environment(\.dismiss) private var dismiss
     
     private let dateFormat = Date.FormatStyle(date: .abbreviated, time: .shortened)
+    
+    // TODO: Add a way to cancel edits
+    // TODO: Add some kind of picture or emoji?
 
     var body: some View {
         VStack {
