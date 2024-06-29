@@ -5,7 +5,10 @@ struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     
     @Query private var cats: [Cat]
-
+    
+    @State private var showOptions = false
+    @State private var sortOption: SortOption = .none
+    
     var body: some View {
         NavigationStack {
             List { listContent }
@@ -15,11 +18,18 @@ struct ContentView: View {
                 .toolbar { toolbar }
                 .navigationTitle("Cat organizer")
                 .navigationHeaderStyle(.orange, size: .large)
+                .animation(.default, value: sortOption)
+                .sheet(isPresented: $showOptions) {
+                    OptionsView(sortOption: $sortOption.animation())
+                        .presentationDetents([.medium])
+                        .presentationDragIndicator(.visible)
+                        .presentationCornerRadius(16)
+                }
         }
     }
     
     private var listContent: some View {
-        ForEach(cats) { cat in
+        ForEach(sortedAndFilteredCats) { cat in
             NavigationLink {
                 EditCatView(cat: cat)
             } label: {
@@ -39,9 +49,14 @@ struct ContentView: View {
     private var toolbar: some ToolbarContent {
         ToolbarItemGroup {
             EditButton()
+                .foregroundStyle(.primary)
             
             Button(action: addCat) {
                 Label("Add new Cat", systemImage: "plus")
+            }
+            
+            Button(action: { showOptions = true }) {
+                Label("Sort and Filter", systemImage: "line.3.horizontal.decrease.circle")
             }
         }
     }
@@ -49,10 +64,24 @@ struct ContentView: View {
     private func addCat() {
         withAnimation {
             let newCat = CatFactory.create()
-            
             modelContext.insert(newCat)
         }
     }
+    
+    private var sortedAndFilteredCats: [Cat] {
+            switch sortOption {
+            case .none:
+                return cats
+            case .nameAscending:
+                return cats.sorted { $0.name < $1.name }
+            case .nameDescending:
+                return cats.sorted { $0.name > $1.name }
+            case .colorAscending:
+                return cats.sorted { $0.color.rawValue < $1.color.rawValue }
+            case .colorDescending:
+                return cats.sorted { $0.color.rawValue > $1.color.rawValue }
+            }
+        }
     
     private func deleteCats(offsets: IndexSet) {
         withAnimation {
