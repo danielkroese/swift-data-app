@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct NavigationHeaderStyle<S>: ViewModifier where S: ShapeStyle {
+    @Environment(\.colorScheme) var colorScheme
+    
     let style: S
     let titleDisplayMode: NavigationBarItem.TitleDisplayMode
     
@@ -8,8 +10,12 @@ struct NavigationHeaderStyle<S>: ViewModifier where S: ShapeStyle {
         content
             .toolbarBackground(style, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
-            .toolbarColorScheme(.dark, for: .navigationBar)
+            .toolbarColorScheme(toolbarColorScheme, for: .navigationBar)
             .navigationBarTitleDisplayMode(titleDisplayMode)
+    }
+    
+    private var toolbarColorScheme: ColorScheme {
+        colorScheme == .dark ? .light :.dark
     }
 }
 

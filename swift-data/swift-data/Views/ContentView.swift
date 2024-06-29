@@ -10,7 +10,8 @@ struct ContentView: View {
         NavigationStack {
             List { listContent }
                 .scrollContentBackground(.hidden)
-                .padding(.top, 32)
+                .padding(.top)
+                .background(.orange.quinary)
                 .toolbar { toolbar }
                 .navigationTitle("Cat organizer")
                 .navigationHeaderStyle(.orange, size: .large)
@@ -22,8 +23,14 @@ struct ContentView: View {
             NavigationLink {
                 EditCatView(cat: cat)
             } label: {
-                Text("\(cat.name), \(cat.color.rawValue)")
+                Label {
+                    Text("\(cat.name), \(cat.color.rawValue)")
+                } icon: {
+                    Image(systemName: "pawprint.fill")
+                        .foregroundStyle(cat.color.color)
+                }
             }
+            .listRowSeparatorTint(.orange)
             .listRowBackground(cat.color.color.opacity(0.4))
         }
         .onDelete(perform: deleteCats)
