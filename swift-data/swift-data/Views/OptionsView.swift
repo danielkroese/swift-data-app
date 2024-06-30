@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct OptionsView: View {
-    @Binding var sortOption: SortOption
+    @Binding var sortOption: CatSortOption
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -9,7 +9,7 @@ struct OptionsView: View {
             Form {
                 Section(header: Text("Sort")) {
                     Picker("Sort", selection: $sortOption) {
-                        ForEach(SortOption.allCases, id: \.self) { option in
+                        ForEach(CatSortOption.allCases, id: \.self) { option in
                             Text(option.rawValue).tag(option)
                         }
                     }
@@ -24,15 +24,6 @@ struct OptionsView: View {
             .navigationHeaderStyle(.purple, size: .large)
         }
     }
-}
-
-enum SortOption: String, CaseIterable {
-    case dateAscending = "Old first"
-    case dateDescending = "New first"
-    case nameAscending = "Name (A-Z)"
-    case nameDescending = "Name (Z-A)"
-    case colorAscending = "Color (A-Z)"
-    case colorDescending = "Color (Z-A)"
 }
 
 #Preview {
