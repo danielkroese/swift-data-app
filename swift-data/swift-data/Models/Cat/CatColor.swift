@@ -5,17 +5,18 @@ enum CatColor: String, Codable, CaseIterable {
     case red
     case orange
     case brown
-    case white
-    case black
     case gray
+    case blue
+    case yellow
     
     var color: Color {
         switch self {
         case .red: .red
         case .orange: .orange
         case .brown: .brown
-        case .white, .gray: .gray
-        case .black: .gray
+        case .gray: .gray
+        case .blue: .blue
+        case .yellow: .yellow
         }
     }
 }
