@@ -1,14 +1,17 @@
 # SwiftData
 
-A try-out with SwiftData
+Playground to try out Swift Data. It became a Cat Organizer in which you can keep track of all the cats that you have.
 
-## What I want to do with this project
+## Features
 
-- [x] Use Swift Data
-- [x] Store info about cats!
-- [x] Offer CRUD interface in SwiftUI
-- [x] Animate data changes
-- [ ] Order list of cats by different criteria
-- [ ] Export data into a PDF and share it
-- [ ] ???
-- [ ] profit
+- Swift Data
+- CRUD interface in SwiftUI
+- Fully animated data changes
+- Order items
+- Filter items [wip]
+
+## TODO list
+
+- [ ] Filter list of cats
+ - [ ] By name (search?)
+ - [ ] By color
