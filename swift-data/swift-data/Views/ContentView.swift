@@ -7,7 +7,7 @@ struct ContentView: View {
     @Query private var cats: [Cat]
     
     @State private var showOptions = false
-    @State private var sortOption: SortOption = .none
+    @State private var sortOption: SortOption = .dateAscending
     
     var body: some View {
         NavigationStack {
@@ -50,14 +50,13 @@ struct ContentView: View {
                 EditCatView(cat: cat)
             } label: {
                 Label {
-                    Text("\(cat.name), \(cat.color.rawValue)")
+                    Text(cat.name.localizedCapitalized)
                 } icon: {
                     Image(systemName: "pawprint.fill")
                         .foregroundStyle(cat.color.color)
                 }
             }
-            .listRowSeparatorTint(.orange)
-            .listRowBackground(cat.color.color.opacity(0.4))
+            .listRowStyle(cat.color.color)
         }
         .onDelete(perform: deleteCats)
     }
@@ -75,8 +74,10 @@ struct ContentView: View {
     
     private var sortedAndFilteredCats: [Cat] {
         switch sortOption {
-        case .none:
-            return cats
+        case .dateAscending:
+            return cats.sorted { $0.timestamp < $1.timestamp }
+        case .dateDescending:
+            return cats.sorted { $0.timestamp > $1.timestamp }
         case .nameAscending:
             return cats.sorted { $0.name < $1.name }
         case .nameDescending:

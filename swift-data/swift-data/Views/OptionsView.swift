@@ -15,15 +15,20 @@ struct OptionsView: View {
                     }
                     .pickerStyle(.wheel)
                 }
+                .listRowStyle(.purple)
             }
+            .listRowStyle(.purple)
+            .background(.purple.quinary)
             .navigationTitle("Options")
             .navigationBarItems(trailing: Button("Done") { dismiss() })
+            .navigationHeaderStyle(.purple, size: .large)
         }
     }
 }
 
 enum SortOption: String, CaseIterable {
-    case none = "Default"
+    case dateAscending = "Old first"
+    case dateDescending = "New first"
     case nameAscending = "Name (A-Z)"
     case nameDescending = "Name (Z-A)"
     case colorAscending = "Color (A-Z)"

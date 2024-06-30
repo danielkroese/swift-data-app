@@ -3,8 +3,6 @@ import XCTest
 
 final class CatTests: XCTestCase {
     func test_init() {
-        let sut = Cat(timestamp: Date(), name: "", color: .red)
-        
-
+        _ = Cat(timestamp: Date(), name: "", color: .red)
     }
 }

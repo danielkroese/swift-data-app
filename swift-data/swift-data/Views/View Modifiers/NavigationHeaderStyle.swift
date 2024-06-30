@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct NavigationHeaderStyle<S>: ViewModifier where S: ShapeStyle {
+struct NavigationHeaderStyle<S>: ViewModifier where S: ShapeStyle & Equatable {
     @Environment(\.colorScheme) var colorScheme
     
     let style: S
@@ -12,10 +12,11 @@ struct NavigationHeaderStyle<S>: ViewModifier where S: ShapeStyle {
             .toolbarBackground(.visible, for: .navigationBar)
             .toolbarColorScheme(toolbarColorScheme, for: .navigationBar)
             .navigationBarTitleDisplayMode(titleDisplayMode)
+            .animation(.smooth, value: style)
     }
     
     private var toolbarColorScheme: ColorScheme {
-        colorScheme == .dark ? .light :.dark
+        colorScheme == .dark ? .light : .dark
     }
 }
 
@@ -23,7 +24,7 @@ extension View {
     func navigationHeaderStyle<S>(
         _ style: S,
         size: NavigationBarItem.TitleDisplayMode
-    ) -> some View where S: ShapeStyle {
+    ) -> some View where S: ShapeStyle & Equatable {
         self.modifier(NavigationHeaderStyle(style: style, titleDisplayMode: size))
     }
 }

@@ -24,21 +24,23 @@ struct EditCatView: View {
             
             Form {
                 Group {
-                    TextField("Name", text: $cat.name.animation())
+                    TextField("Name", text: $cat.name.animation(.smooth))
                     
-                    Picker("Color", selection: $cat.color.animation()) {
+                    Picker("Color", selection: $cat.color.animation(.smooth)) {
                         ForEach(CatColor.allCases) { color in
                             Text(color.rawValue.localizedCapitalized)
                         }
                     }
                 }
-                .listRowBackground(cat.color.color.opacity(0.4))
+                .listRowStyle(cat.color.color)
             }
             .scrollContentBackground(.hidden)
             
             Button("Close") {
                 dismiss()
             }
+            .font(.title3.bold())
+            .foregroundStyle(cat.color.color)
         }
         .background(cat.color.color.quinary)
         .navigationTitle("Edit cat")

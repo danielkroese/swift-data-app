@@ -23,6 +23,7 @@
 		5D5336CA2C2DFC47009E58A6 /* CatFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5336C92C2DFC47009E58A6 /* CatFactory.swift */; };
 		5D5336CD2C2F68F4009E58A6 /* NavigationHeaderStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5336CC2C2F68F4009E58A6 /* NavigationHeaderStyle.swift */; };
 		5D5336CF2C30B050009E58A6 /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5336CE2C30B050009E58A6 /* OptionsView.swift */; };
+		5D5336D32C319595009E58A6 /* ListRowStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5336D22C319595009E58A6 /* ListRowStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		5D5336C92C2DFC47009E58A6 /* CatFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatFactory.swift; sourceTree = "<group>"; };
 		5D5336CC2C2F68F4009E58A6 /* NavigationHeaderStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHeaderStyle.swift; sourceTree = "<group>"; };
 		5D5336CE2C30B050009E58A6 /* OptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
+		5D5336D22C319595009E58A6 /* ListRowStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				5D5336CC2C2F68F4009E58A6 /* NavigationHeaderStyle.swift */,
+				5D5336D22C319595009E58A6 /* ListRowStyle.swift */,
 			);
 			path = "View Modifiers";
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 				5D5336872C29F83E009E58A6 /* Sources */,
 				5D5336882C29F83E009E58A6 /* Frameworks */,
 				5D5336892C29F83E009E58A6 /* Resources */,
+				5D5336D12C3193D5009E58A6 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -284,6 +288,9 @@
 				Base,
 			);
 			mainGroup = 5D5336822C29F83E009E58A6;
+			packageReferences = (
+				5D5336D02C3193A2009E58A6 /* XCRemoteSwiftPackageReference "SwiftLint" */,
+			);
 			productRefGroup = 5D53368C2C29F83E009E58A6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -321,6 +328,26 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5D5336D12C3193D5009E58A6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5D5336872C29F83E009E58A6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -330,6 +357,7 @@
 				5D5336912C29F83E009E58A6 /* ContentView.swift in Sources */,
 				5D5336C42C2DF4A6009E58A6 /* CatColor.swift in Sources */,
 				5D5336932C29F83E009E58A6 /* Cat.swift in Sources */,
+				5D5336D32C319595009E58A6 /* ListRowStyle.swift in Sources */,
 				5D5336CA2C2DFC47009E58A6 /* CatFactory.swift in Sources */,
 				5D5336C72C2DF7B1009E58A6 /* EditCatView.swift in Sources */,
 				5D5336BD2C2DED2A009E58A6 /* ModelContainerFactory.swift in Sources */,
@@ -668,6 +696,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5D5336D02C3193A2009E58A6 /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/SwiftLint.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.55.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = 5D5336832C29F83E009E58A6 /* Project object */;
 }
