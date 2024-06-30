@@ -3,7 +3,7 @@ import SwiftData
 
 @main
 struct SwiftDataApp: App {
-    var modelContainer: ModelContainer = {
+    private let modelContainer: ModelContainer = {
         do {
             return try ModelContainerFactory.create()
         } catch {

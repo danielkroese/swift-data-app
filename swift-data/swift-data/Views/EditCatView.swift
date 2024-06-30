@@ -1,11 +1,21 @@
 import SwiftUI
-import UIKit
+import SwiftData
 
 struct EditCatView: View {
     @Bindable var cat: Cat
+    
     @Environment(\.dismiss) private var dismiss
     
     private let dateFormat = Date.FormatStyle(date: .abbreviated, time: .shortened)
+    
+    private let modelContext: ModelContext
+    
+    init(id: PersistentIdentifier, in container: ModelContainer) {
+        modelContext = ModelContext(container)
+        modelContext.autosaveEnabled = false
+        
+        cat = modelContext.model(for: id) as? Cat ?? CatFactory.create()
+    }
     
     var body: some View {
         VStack {
@@ -36,18 +46,33 @@ struct EditCatView: View {
             }
             .scrollContentBackground(.hidden)
             
-            Button("Close") {
-                dismiss()
-            }
-            .font(.title3.bold())
-            .foregroundStyle(cat.color.color)
+            buttonsView
         }
         .background(cat.color.color.quinary)
         .navigationTitle("Edit cat")
         .navigationHeaderStyle(cat.color.color, size: .inline)
     }
-}
-
-#Preview {
-    EditCatView(cat: CatFactory.create())
+    
+    private var buttonsView: some View {
+        Group {
+            if modelContext.hasChanges {
+                Button("Save and close") {
+                    try? modelContext.save()
+                    dismiss()
+                }
+                .buttonStyle(EditButtonStyle(style: .primary))
+                
+                Button("Discard and close", role: .destructive) {
+                    dismiss()
+                }
+                .buttonStyle(EditButtonStyle(style: .red))
+            } else {
+                Button("Close") {
+                    dismiss()
+                }
+                .buttonStyle(EditButtonStyle(style: .primary))
+            }
+        }
+        .animation(.smooth, value: modelContext.hasChanges)
+    }
 }

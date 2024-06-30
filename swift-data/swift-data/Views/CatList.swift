@@ -21,7 +21,7 @@ struct CatList: View {
             List(selection: $multiSelection) {
                 ForEach(cats) { cat in
                     NavigationLink {
-                        EditCatView(cat: cat)
+                        EditCatView(id: cat.persistentModelID, in: modelContext.container)
                     } label: {
                         Label {
                             Text(cat.name.localizedCapitalized)
@@ -53,11 +53,15 @@ struct CatList: View {
     
     private var actionButton: some View {
         if multiSelection.isEmpty == false {
-            Label("Delete selected Cats", systemImage: "trash.fill")
-                .actionButtonStyle(.red, action: deleteCats)
+            Button(action: deleteCats) {
+                Label("Delete selected Cats", systemImage: "trash.fill")
+            }
+            .buttonStyle(ActionButtonStyle(color: .red))
         } else {
-            Label("Add new Cat", systemImage: "plus")
-                .actionButtonStyle(.orange, action: addCat)
+            Button(action: addCat) {
+                Label("Add new Cat", systemImage: "plus")
+            }
+            .buttonStyle(ActionButtonStyle(color: .orange))
         }
     }
     
