@@ -11,10 +11,6 @@ Playground to try out Swift Data. It became a Cat Organizer in which you can kee
 - Filter items [wip]
 
 ## TODO list
-
-- Filter list of cats
- - [ ] By name (search?)
- - [ ] By color
  
 - Update edit screen
  - [ ] Add delete button with confirmation

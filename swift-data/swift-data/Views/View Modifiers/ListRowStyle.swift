@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ListRowStyle<S>: ViewModifier where S: ShapeStyle & Equatable {
-    @Environment(\.colorScheme) var colorScheme
+    @Environment(\.colorScheme) private var colorScheme
     
     let style: S
     
@@ -10,10 +10,11 @@ struct ListRowStyle<S>: ViewModifier where S: ShapeStyle & Equatable {
             .scrollContentBackground(.hidden)
             .listRowSeparator(.hidden)
             .listRowBackground(
-                RoundedRectangle(cornerRadius: 8)
+                Rectangle()
                     .foregroundStyle(style.tertiary)
-                    .padding(.vertical, 2)
             )
+            .listRowSpacing(18)
+            .listSectionSpacing(18)
             .animation(.smooth, value: style)
     }
     

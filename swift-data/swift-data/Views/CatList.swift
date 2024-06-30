@@ -28,6 +28,8 @@ struct CatList: View {
                             Image(systemName: "pawprint.fill")
                                 .foregroundStyle(cat.color.color)
                         }
+                        .font(.title2)
+                        .padding(.vertical, 2)
                     }
                     .listRowStyle(cat.color.color)
                 }
