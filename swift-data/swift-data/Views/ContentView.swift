@@ -11,20 +11,36 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            List { listContent }
-                .scrollContentBackground(.hidden)
-                .padding(.top)
-                .background(.orange.quinary)
-                .toolbar { toolbar }
-                .navigationTitle("Cat organizer")
-                .navigationHeaderStyle(.orange, size: .large)
-                .animation(.default, value: sortOption)
-                .sheet(isPresented: $showOptions) {
-                    OptionsView(sortOption: $sortOption.animation())
-                        .presentationDetents([.medium])
-                        .presentationDragIndicator(.visible)
-                        .presentationCornerRadius(16)
+            ZStack {
+                List { listContent }
+                    .contentMargins(32, for: .scrollContent)
+                    .scrollContentBackground(.hidden)
+                    .background(.orange.quinary)
+                    .toolbar { toolbar }
+                    .navigationTitle("Cat organizer")
+                    .navigationHeaderStyle(.orange, size: .large)
+                    .animation(.smooth, value: cats)
+                    .animation(.smooth, value: sortOption)
+                    .sheet(isPresented: $showOptions) {
+                        OptionsView(sortOption: $sortOption)
+                            .presentationDetents([.medium])
+                            .presentationDragIndicator(.visible)
+                            .presentationCornerRadius(16)
+                    }
+                
+                Button(action: addCat) {
+                    Label("Add new Cat", systemImage: "plus")
+                        .labelStyle(.iconOnly)
+                        .font(.system(size: 32))
+                        .foregroundStyle(.background)
+                        .padding(16)
+                        .background(Color.orange, in: Circle())
                 }
+                .background(Color.orange.secondary, in: Circle())
+                .shadow(color: .orange.opacity(0.5), radius: 20)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+                .padding(16)
+            }
         }
     }
     
@@ -51,13 +67,24 @@ struct ContentView: View {
             EditButton()
                 .foregroundStyle(.primary)
             
-            Button(action: addCat) {
-                Label("Add new Cat", systemImage: "plus")
-            }
-            
             Button(action: { showOptions = true }) {
                 Label("Sort and Filter", systemImage: "line.3.horizontal.decrease.circle")
             }
+        }
+    }
+    
+    private var sortedAndFilteredCats: [Cat] {
+        switch sortOption {
+        case .none:
+            return cats
+        case .nameAscending:
+            return cats.sorted { $0.name < $1.name }
+        case .nameDescending:
+            return cats.sorted { $0.name > $1.name }
+        case .colorAscending:
+            return cats.sorted { $0.color.rawValue < $1.color.rawValue }
+        case .colorDescending:
+            return cats.sorted { $0.color.rawValue > $1.color.rawValue }
         }
     }
     
@@ -67,21 +94,6 @@ struct ContentView: View {
             modelContext.insert(newCat)
         }
     }
-    
-    private var sortedAndFilteredCats: [Cat] {
-            switch sortOption {
-            case .none:
-                return cats
-            case .nameAscending:
-                return cats.sorted { $0.name < $1.name }
-            case .nameDescending:
-                return cats.sorted { $0.name > $1.name }
-            case .colorAscending:
-                return cats.sorted { $0.color.rawValue < $1.color.rawValue }
-            case .colorDescending:
-                return cats.sorted { $0.color.rawValue > $1.color.rawValue }
-            }
-        }
     
     private func deleteCats(offsets: IndexSet) {
         withAnimation {

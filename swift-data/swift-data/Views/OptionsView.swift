@@ -8,7 +8,7 @@ struct OptionsView: View {
         NavigationView {
             Form {
                 Section(header: Text("Sort")) {
-                    Picker("Sort", selection: $sortOption.animation()) {
+                    Picker("Sort", selection: $sortOption) {
                         ForEach(SortOption.allCases, id: \.self) { option in
                             Text(option.rawValue).tag(option)
                         }

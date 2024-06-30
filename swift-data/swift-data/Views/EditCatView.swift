@@ -7,9 +7,6 @@ struct EditCatView: View {
     
     private let dateFormat = Date.FormatStyle(date: .abbreviated, time: .shortened)
     
-    // TODO: Add a way to cancel edits
-    // TODO: Add some kind of picture or emoji?
-
     var body: some View {
         VStack {
             VStack(alignment: .leading, spacing: 16) {
