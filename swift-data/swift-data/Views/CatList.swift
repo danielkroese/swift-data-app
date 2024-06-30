@@ -3,21 +3,22 @@ import SwiftData
 
 struct CatList: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.editMode) private var editMode
     
     @Binding var sortOption: CatSortOption
     
     @Query private var cats: [Cat]
     
-    init(
-        sortOption: Binding<CatSortOption>
-    ) {
+    @State private var multiSelection = Set<UUID>()
+    
+    init(sortOption: Binding<CatSortOption>) {
         _sortOption = sortOption
         _cats = Query(sort: [sortOption.wrappedValue.sortDescriptor])
     }
     
     var body: some View {
         ZStack {
-            List {
+            List(selection: $multiSelection) {
                 ForEach(cats) { cat in
                     NavigationLink {
                         EditCatView(cat: cat)
@@ -38,27 +39,49 @@ struct CatList: View {
             .contentMargins(32, for: .scrollContent)
             .scrollContentBackground(.hidden)
             .background(.orange.quinary)
-            .animation(.smooth, value: cats)
+            .animation(.default, value: cats)
             
-            Button(action: addCat) {
-                Label("Add new Cat", systemImage: "plus")
-                    .labelStyle(.iconOnly)
-                    .font(.system(size: 32))
-                    .foregroundStyle(.background)
-                    .padding(16)
-                    .background(Color.orange, in: Circle())
-            }
-            .background(Color.orange.secondary, in: Circle())
-            .shadow(color: .orange.opacity(0.5), radius: 20)
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
-            .padding(16)
+            actionButton
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+                .padding(24)
+                .animation(.default, value: multiSelection.isEmpty)
+        }
+        .onDisappear {
+            multiSelection.removeAll()
+        }
+    }
+    
+    private var actionButton: some View {
+        if multiSelection.isEmpty == false {
+            Label("Delete selected Cats", systemImage: "trash.fill")
+                .actionButtonStyle(.red, action: deleteCats)
+        } else {
+            Label("Add new Cat", systemImage: "plus")
+                .actionButtonStyle(.orange, action: addCat)
         }
     }
     
     private func addCat() {
+        let newCat = CatFactory.create()
+        
         withAnimation {
-            let newCat = CatFactory.create()
             modelContext.insert(newCat)
+        }
+    }
+    
+    private func deleteCats() {
+        let catsToDelete = cats.filter { cat in
+            multiSelection.contains { selection in
+                selection == cat.id
+            }
+        }
+        
+        withAnimation {
+            for cat in catsToDelete {
+                modelContext.delete(cat)
+            }
+            
+            multiSelection.removeAll()
         }
     }
     

@@ -26,6 +26,7 @@
 		5D5336D32C319595009E58A6 /* ListRowStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5336D22C319595009E58A6 /* ListRowStyle.swift */; };
 		5D5336D52C319EFD009E58A6 /* CatSortOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5336D42C319EFD009E58A6 /* CatSortOption.swift */; };
 		5D5336D72C31B8FA009E58A6 /* CatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5336D62C31B8FA009E58A6 /* CatList.swift */; };
+		5D5336D92C31E681009E58A6 /* ActionButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5336D82C31E681009E58A6 /* ActionButtonStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		5D5336D22C319595009E58A6 /* ListRowStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowStyle.swift; sourceTree = "<group>"; };
 		5D5336D42C319EFD009E58A6 /* CatSortOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatSortOption.swift; sourceTree = "<group>"; };
 		5D5336D62C31B8FA009E58A6 /* CatList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatList.swift; sourceTree = "<group>"; };
+		5D5336D82C31E681009E58A6 /* ActionButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButtonStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				5D5336CC2C2F68F4009E58A6 /* NavigationHeaderStyle.swift */,
+				5D5336D82C31E681009E58A6 /* ActionButtonStyle.swift */,
 				5D5336D22C319595009E58A6 /* ListRowStyle.swift */,
 			);
 			path = "View Modifiers";
@@ -362,6 +365,7 @@
 				5D5336D72C31B8FA009E58A6 /* CatList.swift in Sources */,
 				5D5336CD2C2F68F4009E58A6 /* NavigationHeaderStyle.swift in Sources */,
 				5D5336912C29F83E009E58A6 /* ContentView.swift in Sources */,
+				5D5336D92C31E681009E58A6 /* ActionButtonStyle.swift in Sources */,
 				5D5336C42C2DF4A6009E58A6 /* CatColor.swift in Sources */,
 				5D5336932C29F83E009E58A6 /* Cat.swift in Sources */,
 				5D5336D52C319EFD009E58A6 /* CatSortOption.swift in Sources */,

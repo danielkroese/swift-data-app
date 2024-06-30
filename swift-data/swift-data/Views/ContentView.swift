@@ -12,7 +12,6 @@ struct ContentView: View {
                     .toolbar { toolbar }
                     .navigationTitle("Cat organizer")
                     .navigationHeaderStyle(.orange, size: .large)
-                    .animation(.smooth, value: sortOption)
                     .sheet(isPresented: $showOptions) {
                         OptionsView(sortOption: $sortOption)
                             .presentationDetents([.medium])
@@ -24,12 +23,12 @@ struct ContentView: View {
     
     private var toolbar: some ToolbarContent {
         ToolbarItemGroup {
-            EditButton()
-                .foregroundStyle(.primary)
-            
             Button(action: { showOptions = true }) {
                 Label("Sort and Filter", systemImage: "line.3.horizontal.decrease.circle")
             }
+            
+            EditButton()
+                .foregroundStyle(.primary)
         }
     }
 }
